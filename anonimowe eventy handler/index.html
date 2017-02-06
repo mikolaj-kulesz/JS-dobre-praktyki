@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<div>
+		<button class="btn1">Click one</button>
+		<button class="btn2">Click two</button>	
+	</div>
+	<br>	
+	<br>
+	<div>
+		<button class="btn3" data-remove="btn1">Destroy click one</button>
+		<button class="btn4" data-remove="btn2">Destroy click two</button>	
+	</div>
+	<script>
+
+		//Buttons component.js
+		var btnsComponent = function(){
+
+			var self = {};
+
+			self.showDialog = function(){
+				alert('show Dialog Window');
+			};
+
+			self.removeDialog = function(elClass){
+				var el = document.querySelector('.'+elClass)
+				el.removeEventListener('click', self.showDialog, false);
+				alert('Dialog Window removed');
+			};
+
+			return self;
+		};
+
+		//MainView.js
+		(function() {
+
+			var newBtns = new btnsComponent();
+
+			var btn1 = document.querySelector('.btn1')
+			btn1.addEventListener('click', newBtns.showDialog, false);
+
+			var btn2 = document.querySelector('.btn2')
+			btn2.addEventListener('click', newBtns.showDialog, false);
+
+			var btn3 = document.querySelector('.btn3');
+			btn3.addEventListener('click', function(){
+				var elClass = this.dataset.remove;
+				newBtns.removeDialog(elClass);
+			}, false);
+
+			var btn4 = document.querySelector('.btn4');
+			btn4.addEventListener('click', function(){
+				var elClass = this.dataset.remove;
+				newBtns.removeDialog(elClass);
+			}, false);
+
+		}());
+
+	</script>
+</body>
+</html>

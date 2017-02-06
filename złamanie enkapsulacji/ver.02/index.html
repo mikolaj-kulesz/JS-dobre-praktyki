@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<section class="sidebar1"></section>
+	<section class="sidebar2"></section>
+	
+	<script>
+
+		//SidebarComponent.js
+		var sidebarComponent = function(){
+
+			var rootEl = document.createElement('div'),
+				self = {};
+
+			rootEl.innerHTML = 'I am a nice sidebar';
+
+			self.getEl = function(){
+				return rootEl;
+			};
+
+			self.addEl = function(textToAdd){
+
+				rootEl.innerHTML = textToAdd; ;
+				return rootEl;
+			};
+
+			return self;
+		};
+
+		//MainView.js
+		(function() {
+
+			var sidebar1 = new sidebarComponent();
+			var sidebar2 = new sidebarComponent();
+
+			document
+				.querySelector('.sidebar1')
+				.appendChild(sidebar1.getEl());	
+
+			document
+				.querySelector('.sidebar2')
+				.appendChild(sidebar2.addEl('I am a nicer sidebar')); 
+
+		}());
+
+	</script>
+</body>
+</html>

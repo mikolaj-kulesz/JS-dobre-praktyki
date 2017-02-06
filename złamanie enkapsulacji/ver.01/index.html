@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<div class="sidebar"></div>
+	
+	<script>
+(function(argument) {
+
+	var sidebarComponent =function(){
+
+		var rootEl = document.createElement('div'),
+			self = {};
+
+		rootEl.innerHTML = 'I am a nice sidebar';
+
+		document
+			.querySelector('.sidebar')
+			.appendChild(rootEl); 		
+	}();
+
+}());
+	</script>
+</body>
+</html>
